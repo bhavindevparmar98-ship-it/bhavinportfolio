@@ -1,0 +1,14 @@
+{
+  "name": "bhavin-portfolio",
+  "version": "1.0.0",
+  "description": "Bhavin Parmar - Portfolio Website",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Bhavin Parmar",
+  "license": "ISC"
+}
+
