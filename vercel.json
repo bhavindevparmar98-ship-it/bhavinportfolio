@@ -1,7 +1,4 @@
 {
-  "buildCommand": "npm run build || echo 'No build step'",
-  "outputDirectory": ".",
   "framework": "static",
-  "public": true,
-  "env": []
+  "public": true
 }
