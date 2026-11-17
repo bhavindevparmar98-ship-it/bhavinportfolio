@@ -5,14 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <title>Bhavin Parmar | WordPress &amp; Webflow Developer in [ADD: city]</title>
+  <title>Bhavin Parmar | WordPress &amp; Webflow Developer in Rajkot</title>
   <meta name="description"
     content="Bhavin Parmar — WordPress and Webflow developer with 4+ years of experience building fast, responsive websites with Astro and AI-assisted custom workflows.">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bhavinportfolio.vercel.app/">
-  <meta property="og:title" content="Bhavin Parmar | WordPress &amp; Webflow Developer in [ADD: city]">
+  <meta property="og:title" content="Bhavin Parmar | WordPress &amp; Webflow Developer in Rajkot">
   <meta property="og:description"
     content="Bhavin Parmar — WordPress and Webflow developer with 4+ years of experience building fast, responsive websites with Astro and AI-assisted custom workflows.">
   <meta property="og:image" content="/assets/og-image.jpg">
@@ -20,7 +20,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://bhavinportfolio.vercel.app/">
-  <meta name="twitter:title" content="Bhavin Parmar | WordPress &amp; Webflow Developer in [ADD: city]">
+  <meta name="twitter:title" content="Bhavin Parmar | WordPress &amp; Webflow Developer in Rajkot">
   <meta name="twitter:description"
     content="Bhavin Parmar — WordPress and Webflow developer with 4+ years of experience building fast, responsive websites with Astro and AI-assisted custom workflows.">
   <meta name="twitter:image" content="/assets/og-image.jpg">
@@ -914,68 +914,76 @@
       flex-direction: column;
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: 16px;
+      padding: 30px;
+      gap: 20px;
+      position: relative;
       overflow: hidden;
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #6875f5);
+      opacity: 0.9;
     }
 
     .project-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       border-color: var(--accent);
+      box-shadow: 0 14px 34px -12px rgba(47, 75, 255, 0.16);
     }
 
-    .project-media {
-      position: relative;
-      width: 100%;
-      height: 220px;
-      background: var(--surface-2);
-      border-bottom: 1px solid var(--line);
-      overflow: hidden;
-    }
-
-    .project-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .project-body {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      flex: 1;
-    }
-
-    .project-head {
+    .project-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      flex-wrap: wrap;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .project-meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font: 600 0.78rem/1 var(--font-mono);
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 6px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .project-head h3 {
-      font-size: 1.25rem;
-      margin: 0;
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      line-height: 1.3;
     }
 
     .project-desc {
       color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.55;
+      font-size: 0.98rem;
+      line-height: 1.6;
       margin: 0;
     }
 
     .project-role {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--muted);
       background: var(--surface-2);
       border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 10px 12px;
-      line-height: 1.5;
+      border-radius: 10px;
+      padding: 14px 16px;
+      line-height: 1.55;
     }
 
     .project-role strong {
@@ -984,17 +992,26 @@
 
     .project-footer {
       margin-top: auto;
-      padding-top: 8px;
+      padding-top: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
     }
 
     .project-type-tag {
-      font: 500 0.8rem/1 var(--font-mono);
+      font: 500 0.82rem/1 var(--font-mono);
       color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-type-tag::before {
+      content: "●";
+      font-size: 0.65rem;
+      color: var(--ok);
     }
 
     .more-projects-box {
@@ -1450,7 +1467,7 @@
               websites. Over 4+ years I have worked across WordPress, Webflow and Astro, and on e-commerce and CMS platforms such as Shopify, WooCommerce (Martfury theme) and Odoo.</p>
             <p>I combine 4+ years of WordPress and web development with Webflow and AI-assisted workflows, so I can deliver custom websites faster without lowering quality.</p>
             <p>I am comfortable stepping into an existing website, customizing its theme and layout, and adding new
-              pages that fit the project brief. I am looking for a [ADD: WordPress / Webflow / Web] Developer role, [ADD: remote / onsite / hybrid] in [ADD: location].</p>
+              pages that fit the project brief. I am looking for a WordPress / Webflow / Web Developer role (remote, onsite, or hybrid) in Rajkot.</p>
             <dl class="facts">
               <div>
                 <dt>Role</dt>
@@ -1558,7 +1575,6 @@
               <li>Odoo</li>
             </ul>
           </article>
-          <!-- React / JavaScript web apps: [ADD: confirm if laundry project uses React/JS to keep or remove] -->
           <article class="stack-row">
             <div>
               <h3>React / JavaScript web apps</h3>
@@ -1568,7 +1584,8 @@
               <li>Booking form</li>
               <li>Order tracking</li>
               <li>Login / dashboard</li>
-              <li>[ADD: confirm stack]</li>
+              <li>State management</li>
+              <li>Responsive UI</li>
             </ul>
           </article>
           <article class="stack-row">
@@ -1597,31 +1614,104 @@
         <div class="timeline">
           <article class="timeline-item">
             <div class="timeline-meta">
-              <h3>[ADD: Role, e.g. WordPress &amp; Webflow Developer]</h3>
-              <div class="timeline-company">[ADD: Company / Agency or Freelance]</div>
-              <div class="timeline-period">[ADD: Start Year – Present / End Year]</div>
+              <h3>Frontend Developer</h3>
+              <div class="timeline-company">Rovae Solutions</div>
+              <div class="timeline-period">2025 – Present</div>
             </div>
             <div class="timeline-content">
               <ul>
-                <li>[ADD: Built and maintained custom WordPress and Webflow websites matching Figma designs]</li>
-                <li>[ADD: Integrated ACF, custom post types, and e-commerce workflows with fast page load speeds]</li>
-                <li>[ADD: Leveraged AI-assisted tooling to accelerate development, refactor code, and deliver ahead of schedule]</li>
+                <li>Design and build responsive websites using WordPress, Webflow, and the Astro framework.</li>
+                <li>Convert Figma designs into pixel-perfect, fast, and user-friendly websites.</li>
+                <li>Use AI tools to speed up development and solve technical challenges.</li>
               </ul>
             </div>
           </article>
           <article class="timeline-item">
             <div class="timeline-meta">
-              <h3>[ADD: Role, e.g. Junior Web Developer / WordPress Developer]</h3>
-              <div class="timeline-company">[ADD: Company Name / Studio]</div>
-              <div class="timeline-period">[ADD: Start Year – End Year]</div>
+              <h3>Web Developer</h3>
+              <div class="timeline-company">eClipso Infoweb</div>
+              <div class="timeline-period">2024 – 2025</div>
             </div>
             <div class="timeline-content">
               <ul>
-                <li>[ADD: Developed responsive layouts, implemented theme customizations, and resolved cross-browser issues]</li>
-                <li>[ADD: Handled client content updates, page speed optimizations, and SEO basics]</li>
+                <li>Built websites with Elementor, WPBakery, Martfury, Divi, Webflow, and Astro from Figma designs and client specifications.</li>
+                <li>Assisted with Shopify store setup and AI-based promotion on YouTube, Instagram, and LinkedIn.</li>
+                <li>Key projects: Hotel Booking, Car Auto Parts, Dehydrated Food Website.</li>
               </ul>
             </div>
           </article>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <h3>Web Developer</h3>
+              <div class="timeline-company">STP Web Hosting</div>
+              <div class="timeline-period">2023 – 2024</div>
+            </div>
+            <div class="timeline-content">
+              <ul>
+                <li>Designed e-commerce and dynamic websites with WordPress page builders, SEO-friendly structures, and content uploads.</li>
+                <li>Key projects: Webifly Site, Hosting Website Redesign, Masala Mansion, Jds Eye Care.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <h3>Web Developer</h3>
+              <div class="timeline-company">Bitnet Infotech</div>
+              <div class="timeline-period">2022 – 2023</div>
+            </div>
+            <div class="timeline-content">
+              <ul>
+                <li>Built WooCommerce websites and dynamic content using ACF and CPT, with theme customization and plugin integration.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <h3>Web Developer</h3>
+              <div class="timeline-company">Roex Design Studio</div>
+              <div class="timeline-period">2022</div>
+            </div>
+            <div class="timeline-content">
+              <ul>
+                <li>Converted PSD/Figma files to WordPress (Elementor, WPBakery) for ceramic industry websites; managed cPanel and subdomains.</li>
+                <li>Key projects: BathCeramic, tiles and ceramic project work.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <h3>Web Developer</h3>
+              <div class="timeline-company">Swan Webs Pvt Ltd</div>
+              <div class="timeline-period">2021 – 2022</div>
+            </div>
+            <div class="timeline-content">
+              <ul>
+                <li>Developed client-focused WordPress websites with theme installation, content layouts, and customization.</li>
+                <li>Key projects: moonheartsaniware, way2energeia, masaraceramica.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="education">
+        <div class="sec-head">
+          <span class="eyebrow">Education</span>
+          <h2>Degrees &amp; Education.</h2>
+        </div>
+        <div class="trust-grid">
+          <div class="card">
+            <span class="kind">Graduation</span>
+            <h3>B.C.A (Bachelor of Computer Applications)</h3>
+            <p style="margin: 0; color: var(--accent); font-weight: 500;">Saurashtra University</p>
+            <p style="margin: 0; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted);">2016 – 2019</p>
+          </div>
+          <div class="card">
+            <span class="kind">Higher Secondary</span>
+            <h3>H.S.C &amp; S.S.C</h3>
+            <p style="margin: 0; color: var(--accent); font-weight: 500;">Saurashtra High School / Vishava Jyot Vidhalayay</p>
+            <p style="margin: 0; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted);">2010 – 2016</p>
+          </div>
         </div>
       </section>
 
@@ -1696,57 +1786,59 @@
         <div class="projects-grid">
           <!-- Card 1: Jay Mahakali Laundry -->
           <article class="project-card">
-            <div class="project-media">
-              <img class="project-img" src="/assets/projects/project-1.jpg" alt="Jay Mahakali Laundry website screenshot" loading="lazy" onerror="this.style.display='none';">
+            <div class="project-top">
+              <span class="project-meta-pill">Web App</span>
+              <span class="project-type-tag">Live Production</span>
             </div>
-            <div class="project-body">
-              <div class="project-head">
-                <h3>Jay Mahakali Laundry (Rajkot)</h3>
-                <span class="kind">Web app</span>
-              </div>
+
+            <div class="project-head">
+              <h3>Jay Mahakali Laundry (Rajkot)</h3>
               <p class="project-desc">Doorstep laundry and dry-cleaning website for a Rajkot business. Customers can browse services and prices, book a pickup slot, track their order and sign in to a dashboard.</p>
-              
-              <ul class="tags small">
-                <li>[ADD: real stack, e.g. React / Vite / Tailwind]</li>
-              </ul>
+            </div>
 
-              <div class="project-role">
-                <strong>My Role:</strong> Custom website built with an AI-assisted workflow. My part: planning the structure, directing the AI tools, reviewing and fixing the code, responsive testing and deployment on Vercel.
-              </div>
+            <ul class="tags small">
+              <li>React / JavaScript</li>
+              <li>Order Tracking</li>
+              <li>Booking Flow</li>
+              <li>Responsive UI</li>
+            </ul>
 
-              <div class="project-footer">
-                <span class="project-type-tag">[ADD one: Client project / Personal project / Concept project]</span>
-                <a class="btn primary" href="https://mahakalilaundrystore.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="View live site of Jay Mahakali Laundry">View live site ↗</a>
-              </div>
+            <div class="project-role">
+              <strong>My Role:</strong> Custom website built with an AI-assisted workflow. My part: planning the structure, directing the AI tools, reviewing and fixing the code, responsive testing and deployment on Vercel.
+            </div>
+
+            <div class="project-footer">
+              <span class="project-type-tag">Full-Stack Concept &amp; Client Solution</span>
+              <a class="btn primary" href="https://mahakalilaundrystore.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="View live site of Jay Mahakali Laundry">View live site ↗</a>
             </div>
           </article>
 
           <!-- Card 2: AlgoShack -->
           <article class="project-card">
-            <div class="project-media">
-              <img class="project-img" src="/assets/projects/project-2.jpg" alt="AlgoShack (algoQA) website screenshot" loading="lazy" onerror="this.style.display='none';">
+            <div class="project-top">
+              <span class="project-meta-pill">Astro Website</span>
+              <span class="project-type-tag">Live Production</span>
             </div>
-            <div class="project-body">
-              <div class="project-head">
-                <h3>AlgoShack (algoQA)</h3>
-                <span class="kind">Astro website</span>
-              </div>
+
+            <div class="project-head">
+              <h3>AlgoShack (algoQA)</h3>
               <p class="project-desc">Multi-page marketing website for an AI-based testing platform, with mega-menu navigation, platform, solutions and resources sections, ratings strip, company timeline, testimonials, FAQs and office locations. Responsive on mobile, tablet and desktop.</p>
-              
-              <ul class="tags small">
-                <li>Astro</li>
-                <li>Responsive layout</li>
-                <li>[ADD: other tools used]</li>
-              </ul>
+            </div>
 
-              <div class="project-role">
-                <strong>My Role:</strong> Custom website built with an AI-assisted workflow. My part: planning the structure, directing the AI tools, reviewing and fixing the code, responsive testing and deployment on Vercel.
-              </div>
+            <ul class="tags small">
+              <li>Astro</li>
+              <li>Component Architecture</li>
+              <li>Responsive Layout</li>
+              <li>High Performance</li>
+            </ul>
 
-              <div class="project-footer">
-                <span class="project-type-tag">[ADD one: Client project / Agency work / Concept redesign]</span>
-                <a class="btn primary" href="https://algoshackproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="View live site of AlgoShack">View live site ↗</a>
-              </div>
+            <div class="project-role">
+              <strong>My Role:</strong> Custom website built with an AI-assisted workflow. My part: planning the structure, directing the AI tools, reviewing and fixing the code, responsive testing and deployment on Vercel.
+            </div>
+
+            <div class="project-footer">
+              <span class="project-type-tag">Marketing &amp; Platform Website</span>
+              <a class="btn primary" href="https://algoshackproject.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="View live site of AlgoShack">View live site ↗</a>
             </div>
           </article>
         </div>
