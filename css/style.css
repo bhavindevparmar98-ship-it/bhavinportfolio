@@ -875,6 +875,11 @@
       .projects-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+
+      .project-card {
+        padding: 22px 18px;
+        gap: 16px;
+      }
     }
 
     .project-card {
