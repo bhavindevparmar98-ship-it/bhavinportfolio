@@ -723,21 +723,48 @@
 
     /* stack */
     .stack-list {
-      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .stack-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-      gap: 16px 40px;
-      padding-block: 26px;
-      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: clamp(24px, 3vw, 40px);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .stack-row:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .stack-row h3 {
+      font-size: 1.15rem;
     }
 
     .stack-row p {
       color: var(--muted);
       margin-top: 6px;
-      max-width: 36ch;
+    }
+
+    .stack-row:last-child,
+    .stack-row:nth-last-child(2) {
+      grid-column: 1 / -1;
+    }
+
+    .stack-row:last-child .ai-steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 0;
+    }
+
+    .stack-row:last-child .ai-steps li {
+      background: var(--bg);
     }
 
     .tags {
@@ -751,14 +778,146 @@
       padding: 7px 13px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: var(--surface);
+      background: var(--bg);
       font-size: 0.9rem;
       font-weight: 500;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .stack-row:hover .tags li {
+      border-color: var(--accent-soft);
+    }
+
+    .tags li:hover {
+      background: var(--accent-soft);
+    }
+
+    .stack-controls {
+      display: none;
+    }
+
+    .is-showcase .stack-sticky {
+      position: sticky;
+      top: 88px;
+    }
+
+    .is-showcase .stack-viewport {
+      overflow: hidden;
+    }
+
+    .is-showcase .stack-list {
+      display: flex;
+      gap: 16px;
+      align-items: stretch;
+      will-change: transform;
+    }
+
+    .is-showcase .stack-row {
+      flex: 0 0 min(82%, 760px);
+      min-width: 0;
+      transform: scale(var(--stack-scale, 1));
+      transform-origin: center;
+    }
+
+    .is-showcase .stack-row h3 {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+    }
+
+    .is-showcase .stack-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      color: var(--muted);
+      font: 500 0.78rem/1.3 var(--font-mono);
+    }
+
+    .stack-progress {
+      flex: 1;
+      height: 2px;
+      background: var(--line);
+    }
+
+    .stack-progress span {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    .stack-count {
+      white-space: nowrap;
+    }
+
+    .stack-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .stack-buttons button {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--fg);
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .stack-buttons button:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .stack-buttons button:disabled {
+      opacity: 0.4;
+      cursor: default;
     }
 
     @media (max-width: 760px) {
-      .stack-row {
+      .stack-list {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .stack-row {
+        padding: 20px 18px;
+      }
+
+      .stack-row:last-child .ai-steps {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .is-showcase .stack-sticky {
+        top: 76px;
+      }
+
+      .is-showcase .stack-row {
+        flex-basis: 100%;
+        padding: 18px 16px;
+      }
+
+      .is-showcase .stack-row:last-child .ai-steps {
+        gap: 6px;
+      }
+
+      .is-showcase .tags {
+        gap: 6px;
+      }
+
+      .is-showcase .tags li {
+        padding: 5px 10px;
+        font-size: 0.85rem;
+      }
+
+      .is-showcase .ai-steps li {
+        padding: 8px 10px;
+        font-size: 0.88rem;
+      }
+
+      .is-showcase .stack-controls {
+        gap: 10px;
       }
     }
 

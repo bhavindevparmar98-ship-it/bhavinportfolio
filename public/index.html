@@ -175,7 +175,10 @@
           <span class="eyebrow">Stack</span>
           <h2>The tools I build with.</h2>
         </div>
-        <div class="stack-list">
+        <div class="stack-showcase">
+          <div class="stack-sticky">
+            <div class="stack-viewport">
+              <div class="stack-list">
           <article class="stack-row">
             <div>
               <h3>WordPress</h3>
@@ -282,6 +285,18 @@
               </ol>
             </div>
           </article>
+              </div>
+            </div>
+            <div class="stack-controls" aria-label="Stack showcase controls">
+              <p class="stack-hint">Scroll to explore <span aria-hidden="true">↓</span></p>
+              <div class="stack-progress" aria-hidden="true"><span></span></div>
+              <span class="stack-count" aria-hidden="true">01 / 08</span>
+              <div class="stack-buttons">
+                <button type="button" class="stack-prev" aria-label="Previous stack card">←</button>
+                <button type="button" class="stack-next" aria-label="Next stack card">→</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -667,6 +682,74 @@
           }
         });
       });
+
+      var showcase = document.querySelector('.stack-showcase');
+      var sticky = showcase.querySelector('.stack-sticky');
+      var track = showcase.querySelector('.stack-list');
+      var cards = Array.prototype.slice.call(track.querySelectorAll('.stack-row'));
+      var progressBar = showcase.querySelector('.stack-progress span');
+      var count = showcase.querySelector('.stack-count');
+      var prev = showcase.querySelector('.stack-prev');
+      var next = showcase.querySelector('.stack-next');
+      var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var distance = 0;
+      var active = 0;
+      var frame = 0;
+
+      function updateShowcase() {
+        frame = 0;
+        if (!showcase.classList.contains('is-showcase')) return;
+        var top = parseFloat(getComputedStyle(sticky).top) || 0;
+        var progress = Math.max(0, Math.min(1, (top - showcase.getBoundingClientRect().top) / distance));
+        var position = progress * (cards.length - 1);
+        var offset = cards[cards.length - 1].offsetLeft - cards[0].offsetLeft;
+        track.style.transform = 'translate3d(' + (-offset * progress) + 'px, 0, 0)';
+        cards.forEach(function (card, index) {
+          var proximity = Math.max(0, 1 - Math.abs(position - index));
+          card.style.setProperty('--stack-scale', String(0.96 + proximity * 0.04));
+        });
+        active = Math.round(position);
+        count.textContent = String(active + 1).padStart(2, '0') + ' / ' + String(cards.length).padStart(2, '0');
+        progressBar.style.transform = 'scaleX(' + progress + ')';
+        prev.disabled = active === 0;
+        next.disabled = active === cards.length - 1;
+      }
+
+      function scheduleShowcase() {
+        if (!frame) frame = requestAnimationFrame(updateShowcase);
+      }
+
+      function setupShowcase() {
+        showcase.classList.remove('is-showcase');
+        showcase.style.height = '';
+        track.style.transform = '';
+        cards.forEach(function (card) { card.style.removeProperty('--stack-scale'); });
+        if (motion.matches || cards.length < 2) return;
+        showcase.classList.add('is-showcase');
+        var top = parseFloat(getComputedStyle(sticky).top) || 0;
+        if (sticky.offsetHeight + top + 16 > window.innerHeight) {
+          showcase.classList.remove('is-showcase');
+          return;
+        }
+        distance = (cards.length - 1) * Math.max(160, Math.min(220, window.innerHeight * 0.22));
+        showcase.style.height = (sticky.offsetHeight + distance) + 'px';
+        scheduleShowcase();
+      }
+
+      function moveToCard(index) {
+        var top = parseFloat(getComputedStyle(sticky).top) || 0;
+        var start = window.scrollY + showcase.getBoundingClientRect().top - top;
+        window.scrollTo({ top: start + distance * index / (cards.length - 1), behavior: 'smooth' });
+      }
+
+      prev.addEventListener('click', function () { moveToCard(Math.max(0, active - 1)); });
+      next.addEventListener('click', function () { moveToCard(Math.min(cards.length - 1, active + 1)); });
+      window.addEventListener('scroll', scheduleShowcase, { passive: true });
+      window.addEventListener('resize', setupShowcase);
+      if (motion.addEventListener) motion.addEventListener('change', setupShowcase);
+      else if (motion.addListener) motion.addListener(setupShowcase);
+      setupShowcase();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(setupShowcase);
 
       var y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
